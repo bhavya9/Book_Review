@@ -9,7 +9,15 @@ class BooksController < ApplicationController
 			@category_id = Category.find_by(name: params[:category]).id
 			@books = Book.where(:category_id => @category_id).order("created_at DESC")
 		end
+			if params[:search].blank?
+   		 
+   	 else
+		title = params[:search]
+			@books = Book.where('title Like ? OR description Like ? ', "%#{title}%", "%#{title}%")
+    end
+
 	end
+
 
 	def show
 		if @book.reviews.blank?

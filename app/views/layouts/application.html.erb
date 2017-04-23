@@ -6,10 +6,12 @@
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
+
 <body>
 
 	<nav class="navbar navbar-default">
 
+		
 		<div class="container">
 
 			<div class="navbar-header">
@@ -37,6 +39,12 @@
 						<% end %>
 					</ul>
 				</li>
+				<div class="search">
+   				 <%= form_tag("/", method: "get") do %>
+   				   <%= text_field_tag(:search) %>
+   				   <%= submit_tag("Search") %>
+   				 <% end %>
+   			 </div>
 
 
 				<% if user_signed_in? %>
